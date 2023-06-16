@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const welcome_message =
+        "Welcome to the mystic age guesser. Please enter your name.";
+      let userName = prompt(welcome_message);
+
+      while (!userName) {
+        userName = prompt(welcome_message);
+      }
+      alert(`Hey ${userName}! Let's play a game. I can guess in 7 tries!`);
+
+      let lowerAgeBoundary = 1;
+      let upperAgeBoundary = 122;
+      let didGuessCorrectly = false;
+
+      // main game loop
+      while (didGuessCorrectly === false) {
+        let guess = Math.floor((lowerAgeBoundary + upperAgeBoundary) / 2);
+        if (lowerAgeBoundary > upperAgeBoundary) {
+          prompt(
+            `Hey ${userName}, it seems like theres something wrong...refresh the page`
+          );
+        }
+        let userResponseToGuess = null;
+
+        while (userResponseToGuess !== "y" && userResponseToGuess !== "n") {
+          userResponseToGuess = prompt(
+            `Is your age ${guess}? please enter y for yes or n for no.`
+          );
+        }
+
+        didGuessCorrectly = userResponseToGuess === "y";
+
+        if (didGuessCorrectly === false) {
+          let userResponseToOlderYounger = null;
+
+          // 1:older 2:younger
+          while (
+            userResponseToOlderYounger !== "1" &&
+            userResponseToOlderYounger !== "2"
+          ) {
+            userResponseToOlderYounger = prompt(
+              `Are you older or younger than ${guess}? Enter 1 for older or 2 for younger.`
+            );
+          }
+          //older
+          if (userResponseToOlderYounger === "1") {
+            lowerAgeBoundary = guess + 1;
+          } else {
+            upperAgeBoundary = guess - 1;
+          }
+        }
+      }
+      alert("Please refresh the page to play again!");
+    </script>
+  </body>
+</html>
