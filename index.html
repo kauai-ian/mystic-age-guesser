@@ -7,13 +7,18 @@
   </head>
   <body>
     <script>
-      const welcome_message =
-        "Welcome to the mystic age guesser. Please enter your name.";
-      let userName = prompt(welcome_message);
+      function promptUserForName() {
+        const welcome_message =
+          "Welcome to the mystic age guesser. Please enter your name.";
+        let userName = prompt(welcome_message);
 
-      while (!userName) {
-        userName = prompt(welcome_message);
+        while (!userName) {
+          userName = prompt(welcome_message);
+        }
+        return userName;
       }
+      promptUserForName();
+
       alert(`Hey ${userName}! Let's play a game. I can guess in 7 tries!`);
 
       let lowerAgeBoundary = 1;
